@@ -25,9 +25,11 @@ services:
     container_name: webapp
     volumes:
       - ./webapp:/var/www/html
+      - ./symfony:/home/symfony
     ports:
       - "8080:80"
       - "7443:443"
+      - "8000:8000"
     environment:
       DB_HOST: db:3306
       DB_USER: onlineshop

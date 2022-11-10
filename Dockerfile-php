@@ -23,4 +23,5 @@ RUN apt-get update -y \
     && /src/basic_tools.sh \
     && /src/install-PHP+Tools.sh \
 	&& /src/install-Apache2.sh \
-    && /src/switchhttps.sh
+    && /src/switchhttps.sh \
+    && /src/install-symfony.sh
