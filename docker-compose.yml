@@ -4,7 +4,7 @@ services:
   db:
     build: 
       dockerfile: Dockerfile-mariadb
-    container_name: mariadb
+    container_name: mariadb_s
     volumes:
       - ./init:/docker-entrypoint-initdb.d
       - dbdata:/var/lib/mysql
@@ -22,7 +22,7 @@ services:
   php-apache:
     build: 
       dockerfile: Dockerfile-php
-    container_name: webapp
+    container_name: webapp_s
     volumes:
       - ./webapp:/var/www/html
       - ./symfony:/home/symfony
@@ -39,7 +39,7 @@ services:
   phpmyadmin:
     build:
       dockerfile: Dockerfile-phpmyadmin
-    container_name: pma
+    container_name: pma_s
     links:
       - db
     environment:
@@ -55,4 +55,4 @@ volumes:
   dbdata:
 networks:
   default:
-    name: webnet
+    name: webnet_s
