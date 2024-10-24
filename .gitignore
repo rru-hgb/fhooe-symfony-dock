@@ -1,5 +1,6 @@
 .idea
 webapp/*
+symfony/*
 !.gitattributes
 !.gitignore
 !README.md
