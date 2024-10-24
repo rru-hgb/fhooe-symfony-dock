@@ -26,12 +26,12 @@ mkdir Docker # if not already exists
 cd Docker
 ```
 `PS path-to-Docker> `
-Replace fhooe-web-dock with the appropriate Docker Repository at https://github.com/Digital-Media for other Docker environments.
+Replace *docker-git-repository* with the appropriate Docker Repository.
 ```shell
-git clone https://github.com/Digital-Media/fhooe-web-dock.git
+git clone *docker-git-repository*
 ```
 ```shell
-cd fhooe-web-dock
+cd *docker-git-repository*
 ```
 
 ## Starting Containers
@@ -39,15 +39,7 @@ cd fhooe-web-dock
 ```shell
 docker compose up -d
 ```
-Result
-```shell
- [+] Running 5/5 `\
-    - Network webnet                  Created                                                                   0.0s
-    - Volume "fhooe-web-dock_dbdata"  Created                                                                   0.0s
-    - Container webapp                Started                                                                   5.3s
-    - Container mariadb               Started                                                                   5.0s
-    - Container pma                   Started                                                                   3.2s
-```
+
 ## Refreshing containers after bug fixing
 ```shell
 docker compose up --force-recreate --build -d
@@ -55,8 +47,8 @@ docker compose up --force-recreate --build -d
 ## Cleaning Up and Re-Install
 You can clean up using Docker Desktop
 - Stop and remove Containers
-- Remove Images for mariadb, php-apache and phpmyadmin
-- Remove Volume fhooe-web-dock_dbdata
+- Remove Images 
+- Remove Volumes 
 
 ### Clean Re-Install with Script
 - Go to directory, where docker-compose.yml is installed.

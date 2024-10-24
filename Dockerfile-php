@@ -1,8 +1,6 @@
 # Linux x64
 FROM php:8-apache
 
-LABEL maintainer="mhteaching2703@gmail.com"
-
 COPY src /src
 # Install scripts
 RUN apt-get update -y \

@@ -2,7 +2,7 @@
 
 ## Pull Requests
 
-1. Fork the *fhooe-web-dock* repository.
+1. Fork the repository.
 2. Create a new branch for each feature, improvement or bug fix.
 3. Send a pull request from each feature branch against the main branch. Create a separate branch for each issue allows for an easier review and merging process.
 

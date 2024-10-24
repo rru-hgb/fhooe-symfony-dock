@@ -1,8 +1,6 @@
 # Linux x64
 FROM mariadb:10.7
 
-LABEL maintainer="mhteaching2703@gmail.com"
-
 COPY src /src
 # Install scripts
 RUN    cd /src \

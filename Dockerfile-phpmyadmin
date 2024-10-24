@@ -1,8 +1,6 @@
 # Linux x64 and MAC Intel and MAC M1
 FROM phpmyadmin
 
-LABEL maintainer="mhteaching2703@gmail.com"
-
 COPY src /src
 # Install scripts
 RUN    cd /src \
