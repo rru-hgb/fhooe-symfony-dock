@@ -1,4 +1,5 @@
-# webapp folder mapped to Docker Container
-# This content will visible in the Container after mounting as an docker volume
+# webapp Directory Mapped to Docker Container
 
-Place your Webapp here or clone it after this folder has been mounted in the container
+This folder is mapped as a bind mount to `/var/www/html` in the `webapp` container.
+
+Place your web applications here to make them available through the Apache web server inside the container.

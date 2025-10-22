@@ -1,7 +1,20 @@
-.idea
+# Exclude everything from the webapp folder, except the dashboard
 webapp/*
 symfony/*
 !.gitattributes
 !.gitignore
 !README.md
 .DS_Store
+!webapp/index.php
+!webapp/dashboard/
+
+# Exclude the JetBrains PhpStorm project directory from version control
+.idea/
+
+# Exclude Visual Studio directory
+.vscode/
+
+# Local history for Visual Studio Code
+.history/
+
+

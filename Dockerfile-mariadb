@@ -1,9 +1,8 @@
-# Linux x64
-FROM mariadb:10.7
+# Use the official MariaDB 11.7 image
+FROM mariadb:11.7
 
 COPY src /src
-# Install scripts
-RUN    cd /src \
-    && chmod 755 *.sh \
-    && /src/install-apt.sh \
-    && /src/basic_tools.sh
+
+# Run initialization scripts
+RUN chmod 755 -- /src/*.sh \
+    && /src/install-cli-tools.sh

@@ -1,25 +1,38 @@
-# Linux x64
-FROM php:8-apache
+# Use the official PHP 8.4-apache image
+FROM php:8.4-apache
 
 COPY src /src
-# Install scripts
-RUN apt-get update -y \
-    && apt-get install -y libicu-dev \
-					      libfreetype6-dev \
-						  libjpeg62-turbo-dev \
-		                  libpng-dev \
+
+# Install additional packages and run initialization scripts
+RUN mv "${PHP_INI_DIR}/php.ini-development" "${PHP_INI_DIR}/php.ini" \
+    && apt-get update \
+    && apt-get install -y --no-install-recommends libicu-dev \
+                                                  libfreetype6-dev \
+                                                  libjpeg62-turbo-dev \
+                                                  libpng-dev \
+                                                  libpq-dev \
+                                                  locales \
+                                                  locales-all \
+                                                  gettext \
+    && docker-php-ext-configure pgsql --with-pgsql=/usr/local/pgsql \
+    && docker-php-ext-install pdo pdo_pgsql pgsql \
     && docker-php-ext-install pdo_mysql \
     && docker-php-ext-configure intl \
     && docker-php-ext-install intl \
-	&& docker-php-ext-configure gd --with-freetype --with-jpeg \
-	&& docker-php-ext-install -j$(nproc) gd \
-	&& pecl install xdebug \
-	&& docker-php-ext-enable xdebug \
-    && cd /src \
-    && chmod 755 *.sh \
-    && /src/install-apt.sh \
-    && /src/basic_tools.sh \
-    && /src/install-PHP+Tools.sh \
-	&& /src/install-Apache2.sh \
-    && /src/switchhttps.sh \
-    && /src/install-symfony.sh
+    && docker-php-ext-install gettext \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install -j"$(nproc)" gd \
+    && pecl install xdebug \
+    && docker-php-ext-enable xdebug \
+    && chmod 755 -- /src/*.sh \
+    && /src/install-cli-tools.sh \
+    && /src/install-php-tools.sh \
+    && /src/configure-apache.sh \
+    && /src/configure-https.sh \
+    && /src/install-symfony.sh \
+    && rm -rf /var/lib/apt/lists/*
+
+# Set environment variables
+ENV LC_ALL=en_US.utf8 \
+    LANG=en_US.utf8 \
+    LANGUAGE=en_US.utf8
